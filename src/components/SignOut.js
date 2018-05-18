@@ -1,8 +1,8 @@
 import React from 'react';
 
-const LandingPage = () =>
+const SignOut = () =>
   <div>
-    <h1>sign out page</h1>
+    <h1>signOut</h1>
   </div>
 
-export default LandingPage;
+export default SignOut;

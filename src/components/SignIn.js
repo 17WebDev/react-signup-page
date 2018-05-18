@@ -1,8 +1,8 @@
 import React from 'react';
 
-const LandingPage = () =>
+const SignIn = () =>
   <div>
     <h1>sign in page</h1>
   </div>
 
-export default LandingPage;
+export default SignIn;
