@@ -1,23 +1,21 @@
-const config = {
-  apiKey: YOUR_API_KEY,
-  authDomain: YOUR_AUTH_DOMAIN,
-  databaseURL: YOUR_DATABASE_URL,
-  projectId: YOUR_PROJECT_ID,
-  storageBucket: '',
-  messagingSenderId: YOUR_MESSAGING_SENDER_ID,
-};
 
 import * as firebase from 'firebase';
 
 const config = {
-  apiKey: YOUR_API_KEY,
-  authDomain: YOUR_AUTH_DOMAIN,
-  databaseURL: YOUR_DATABASE_URL,
-  projectId: YOUR_PROJECT_ID,
-  storageBucket: '',
-  messagingSenderId: YOUR_MESSAGING_SENDER_ID,
+   apiKey: "AIzaSyDW8Le2ibSi7RYUwzkuHns7qEW9H4zSldc",
+   authDomain: "react-auth-c8955.firebaseapp.com",
+   databaseURL: "https://react-auth-c8955.firebaseio.com",
+   projectId: "react-auth-c8955",
+   storageBucket: "react-auth-c8955.appspot.com",
+   messagingSenderId: "527098725804"
 };
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
+
+const auth = firebase.auth();
+
+export {
+  auth,
+};
