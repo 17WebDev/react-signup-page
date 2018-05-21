@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Row, Input, Icon } from 'react-materialize';
 
 import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
@@ -67,18 +68,20 @@ class SignInForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input
+
+          s={12} label="First Name" validate
           value={email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         />
-        <input
+      <input
           value={password}
           onChange={event => this.setState(byPropKey('password', event.target.value))}
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+      <button className="blue"disabled={isInvalid} type="submit">
           Sign In
         </button>
 

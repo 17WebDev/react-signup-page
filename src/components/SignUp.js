@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link ,  withRouter} from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import * as routes from '../constants/routes';
+import { Row, Input, Icon } from 'react-materialize';
 
 
 const SignUpPage = ({ history }) =>
@@ -45,8 +46,16 @@ class SignUpForm extends Component {
 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
+
+        // Create a user in your own accessible Firebase Database too
+        db.doCreateUser(authUser.uid, username, email)
+          .then(() => {
+            this.setState(() => ({ ...INITIAL_STATE }));
+            history.push(routes.HOME);
+          })
+          .catch(error => {
+            this.setState(byPropKey('error', error));
+          });
       })
       .catch(error => {
         this.setState(byPropKey('error', error));
@@ -74,12 +83,14 @@ class SignUpForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <Row>
         <input
           value={username}
           onChange={event => this.setState(byPropKey('username', event.target.value))}
           type="text"
           placeholder="Full Name"
         />
+      
         <input
           value={email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}
@@ -98,6 +109,8 @@ class SignUpForm extends Component {
           type="password"
           placeholder="Confirm Password"
         />
+
+    </Row>
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Navigation.css';
 
 import AuthUserContext from './AuthUserContext';
 import SignOutButton from './SignOut';
 import * as routes from '../constants/routes';
+import { Navbar, NavItem, Icon } from 'react-materialize';
 
 const Navigation = () =>
   <AuthUserContext.Consumer>
@@ -14,17 +16,23 @@ const Navigation = () =>
   </AuthUserContext.Consumer>
 
 const NavigationAuth = () =>
-  <ul>
-    <li><Link to={routes.LANDING}>Landing</Link></li>
-    <li><Link to={routes.HOME}>Home</Link></li>
-    <li><Link to={routes.ACCOUNT}>Account</Link></li>
-    <li><SignOutButton /></li>
-  </ul>
+<Navbar  className="Nav"brand='17WebDev' right>
+  <div>
+    <NavItem><Link to={routes.LANDING}>Landing</Link></NavItem>
+    <NavItem><Link to={routes.HOME}>Home</Link></NavItem>
+    <NavItem><Link to={routes.ACCOUNT}>Account</Link></NavItem>
+    <SignOutButton />
+    </div>
+</Navbar>
+
 
 const NavigationNonAuth = () =>
-  <ul>
+
+  <Navbar className="Navigation" brand='17WebDev' right>
     <li><Link to={routes.LANDING}>Landing</Link></li>
-    <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
-  </ul>
+    <li><Link to={routes.SIGN_IN}>SignIn</Link> </li>
+  </Navbar>
+
+
 
 export default Navigation;
